@@ -1,16 +1,34 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Context from './context/Context';
 
 function StarWars() {
   const { planets, getPlanets, loading } = useContext(Context);
+  const [nameInput, setName] = useState('');
 
   useEffect(() => {
     getPlanets();
-  }, [getPlanets]);
+  }, []);
+
+  function handleChange(event) {
+    const { value } = event.target;
+
+    setName(value);
+    console.log(nameInput);
+  }
 
   return (
     <div>
-      <table>
+      <label htmlFor="name-filter">
+        Filtro
+        <input
+          data-testid="name-filter"
+          id="name-filter"
+          value={ nameInput }
+          onChange={ handleChange }
+        />
+      </label>
+
+      <table border="1">
         <thead>
           <tr>
             { !loading && Object.keys(planets[0]).map((planet) => (
@@ -18,53 +36,53 @@ function StarWars() {
             )) }
           </tr>
         </thead>
-
         <tbody>
-          { !loading && planets.map((planet, index) => (
-            <tr key={ index }>
-              <td>
-                { Object.values(planet.name) }
-              </td>
-              <td>
-                { Object.values(planet.rotation_period) }
-              </td>
-              <td>
-                { Object.values(planet.orbital_period) }
-              </td>
-              <td>
-                { Object.values(planet.diameter) }
-              </td>
-              <td>
-                { Object.values(planet.climate) }
-              </td>
-              <td>
-                { Object.values(planet.gravity) }
-              </td>
-              <td>
-                { Object.values(planet.terrain) }
-              </td>
-              <td>
-                { Object.values(planet.surface_water) }
-              </td>
-              <td>
-                { Object.values(planet.population) }
-              </td>
-              <td>
-                { Object.values(planet.films) }
-              </td>
-              <td>
-                { Object.values(planet.created) }
-              </td>
-              <td>
-                { Object.values(planet.edited) }
-              </td>
-              <td>
-                { Object.values(planet.url) }
-              </td>
-            </tr>
-          )) }
+          {!loading && planets
+            .filter((planeta) => planeta.name.includes(nameInput))
+            .map((planet, index) => (
+              <tr key={ index }>
+                <td>
+                  { planet.name }
+                </td>
+                <td>
+                  { planet.rotation_period }
+                </td>
+                <td>
+                  { planet.orbital_period }
+                </td>
+                <td>
+                  { planet.diameter }
+                </td>
+                <td>
+                  { planet.climate }
+                </td>
+                <td>
+                  { planet.gravity }
+                </td>
+                <td>
+                  { planet.terrain }
+                </td>
+                <td>
+                  { planet.surface_water }
+                </td>
+                <td>
+                  { planet.population }
+                </td>
+                <td>
+                  { planet.films }
+                </td>
+                <td>
+                  { planet.created }
+                </td>
+                <td>
+                  { planet.edited }
+                </td>
+                <td>
+                  { planet.url }
+                </td>
+              </tr>
+            ))}
         </tbody>
-        { !loading && console.log(planets) }
       </table>
     </div>
   );
