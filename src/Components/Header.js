@@ -3,7 +3,20 @@ import Context from '../context/Context';
 
 const Header = () => {
   const { handleChange, filterNumeric, buttonFilter,
-    filters: { column, comparison, value } } = useContext(Context);
+    filters: { column, comparison, value },
+    filterByNumericValues,
+    clearFilters,
+    removeFilter } = useContext(Context);
+  const columns = [
+    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
+
+  const columnsFilter = (coluna) => {
+    const bools = [];
+    filterByNumericValues.forEach((filter) => {
+      bools.push(filter.column !== coluna);
+    });
+    return bools.every((el) => el);
+  };
 
   return (
     <header>
@@ -25,11 +38,18 @@ const Header = () => {
             onChange={ filterNumeric }
             value={ column }
           >
-            <option value="population">population</option>
-            <option value="orbital_period">orbital_period</option>
-            <option value="diameter">diameter</option>
-            <option value="rotation_period">rotation_period</option>
-            <option value="surface_water">surface_water</option>
+            {
+              columns
+                .filter(columnsFilter)
+                .map((col) => (
+                  <option
+                    value={ col }
+                    key={ col }
+                  >
+                    { col }
+                  </option>
+                ))
+            }
           </select>
         </label>
 
@@ -67,7 +87,39 @@ const Header = () => {
         >
           Filtro
         </button>
+
+        <button
+          type="button"
+          data-testid="button-remove-filters"
+          onClick={ clearFilters }
+        >
+          Remover Filtros
+        </button>
       </section>
+
+      <div>
+        {
+          filterByNumericValues.map((filter, index) => (
+            <div key={ index }>
+              <p>
+                {filter.column}
+              </p>
+              <button
+                type="button"
+                data-testid="filter"
+                onClick={ () => {
+                  const cloneArray = [...filterByNumericValues];
+                  cloneArray.splice(index, 1);
+                  removeFilter(cloneArray);
+                } }
+              >
+                X
+              </button>
+
+            </div>
+          ))
+        }
+      </div>
     </header>
   );
 };

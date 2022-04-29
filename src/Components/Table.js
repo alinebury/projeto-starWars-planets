@@ -3,7 +3,6 @@ import Context from '../context/Context';
 
 const Table = () => {
   const { planets, filterByName,
-    disabledFilter,
     filterByNumericValues,
   } = useContext(Context);
 
@@ -89,7 +88,6 @@ const Table = () => {
           }
         </tbody>
       </table>
-      { disabledFilter }
     </div>
   );
 };

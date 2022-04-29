@@ -23,7 +23,6 @@ function Provider({ children }) {
 
   const handleChange = ({ target: { value } }) => {
     const lowerCase = value.toLowerCase();
-
     setName(lowerCase);
   };
 
@@ -37,10 +36,18 @@ function Provider({ children }) {
   const buttonFilter = () => {
     setNumeric([...filterByNumericValues, filters]);
     setFilters([{
-      column: 'population',
-      comparison: 'maior que',
+      column: '',
+      comparison: '',
       value: 0,
     }]);
+  };
+
+  const clearFilters = () => {
+    setNumeric([]);
+  };
+
+  const removeFilter = (newFilters) => {
+    setNumeric([newFilters]);
   };
 
   const contextPlanets = { planets,
@@ -52,6 +59,8 @@ function Provider({ children }) {
     filterNumeric,
     filters,
     buttonFilter,
+    clearFilters,
+    removeFilter,
   };
 
   return (
