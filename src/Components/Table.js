@@ -29,13 +29,11 @@ const Table = () => {
 
   return (
     <div>
-      <table border="1">
+      <table>
         <thead>
-          <tr>
-            { Object.keys(planets[0]).map((planet) => (
-              planet !== 'residents' && <th key={ planet }>{planet}</th>
-            )) }
-          </tr>
+          { Object.keys(planets[0]).map((planet) => (
+            planet !== 'residents' && <th key={ planet }>{planet}</th>
+          )) }
         </thead>
         <tbody>
           {

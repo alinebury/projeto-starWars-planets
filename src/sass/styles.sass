@@ -1,0 +1,36 @@
+@use 'variables'
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap')
+
+body
+  font-family: 'Bungee', cursive
+  background-color: variables.$secondary-color
+  color: variables.$font-color
+
+header
+  padding: 20px
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+  h1
+    color: variables.$primary-color
+    font-family: 50px
+  section
+    padding: 10px
+  input, label, select, button
+    background-color: #8d8888
+    border-radius: 2px
+    font-family: 'sans-serif'
+
+table
+  font-size: 12px
+  background-color: #434040
+  thead
+    background-color: #080707
+  tr:nth-child(even) 
+    background-color: variables.$bg-color
+
+table,thead,tbody,td
+  border: 1px solid #000
+  border-radius: 2px

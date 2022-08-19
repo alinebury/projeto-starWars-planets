@@ -20,8 +20,8 @@ const Header = () => {
 
   return (
     <header>
+      <h1>StarWars Planets</h1>
       <label htmlFor="name-filter">
-        StarWars Planets
         <input
           data-testid="name-filter"
           id="name-filter"

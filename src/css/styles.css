@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+body {
+  font-family: "Bungee", cursive;
+  background-color: #161313;
+  color: #FFF;
+}
+
+header {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header h1 {
+  color: #FFFF00;
+  font-family: 50px;
+}
+header section {
+  padding: 10px;
+}
+header input, header label, header select, header button {
+  background-color: #8d8888;
+  border-radius: 2px;
+  font-family: "sans-serif";
+}
+
+table {
+  font-size: 12px;
+  background-color: #434040;
+}
+table thead {
+  background-color: #080707;
+}
+table tr:nth-child(even) {
+  background-color: #312f2f;
+}
+
+table, thead, tbody, td {
+  border: 1px solid #000;
+  border-radius: 2px;
+}
+
+/*# sourceMappingURL=styles.css.map */
