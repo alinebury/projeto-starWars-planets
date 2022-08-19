@@ -1,6 +1,6 @@
 # Projeto Star Wars Plantes
 
-![Star-Wars](/star-wars-planets.mkv)
+![Captura de tela de 2022-08-19 16-05-12](https://user-images.githubusercontent.com/94149084/185689687-91a8021f-7b41-4c7c-a6c8-b66630ede258.png)
 
 ### `npm install`
   Para instalar as depêncidas.
